@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Dela Gothic One' , sans-serif;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0c0ce94d;
+    }
+
+    .container {
+        width: 80%;
+        height: 80vh;
+        display: flex;
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, .212);
+    }
+
+    .form-image{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fde3a7d7;
+        padding: 1rem;
+    }
+
+    .form-image img{
+        width: 31rem;
+    }
+
+    .form {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 3rem;
+    }
+
+    .form-header {
+        margin-bottom: 3rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .login-button {
+        display: flex;
+        align-items: center;
+    }
+
+    .login-button button {
+        border: none;
+
+    }
+
+</style>
+
+<div class="container">
+    <div class="form-image">
+        <img src="log.svg" alt="">
+    </div>
+    <div class="form">
+    <form action="#">
+        <div class="form-header">
+            <div class="title">
+                <h1>Cadastre-se</h1>
+            </div>
+            <div class="login-button">
+                <button><a href="#">Entrar</a></button>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-box">
+                <label for="firstname">Primeiro Nome</label>
+                <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+            </div>
+            <div class="input-box">
+                <label for="lastname">Sobrenome</label>
+                <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+            </div>
+            <div class="input-box">
+                <label for="email">RM</label>
+                <input id="email" type="email" name="email" placeholder="Digite seu RM" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Senha</label>
+                <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Confirme sua Senha</label>
+                <input id="password" type="password" name="Confirmpassword" placeholder="Digite sua senha" required>
+            </div>            
+        </div>
+        <div class="gender-inputs">
+            <div class="gender-title">
+                <h6>Genero</h6>
+            </div>
+            <div class="gender-group">
+                <div class="gender-input">
+                    <input type="radio" id="female" name="gender">
+                    <label for="female">feminino</label>
+                </div>
+
+                <div class="gender-input">
+                    <input type="radio" id="male" name="gender">
+                    <label for="male">masculino</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="continue-button">
+            <button><a href="#">Continuar</a></button>
+        </div>
+    </form>
+    </div>
+</div>
+
+</body>
+</html>
