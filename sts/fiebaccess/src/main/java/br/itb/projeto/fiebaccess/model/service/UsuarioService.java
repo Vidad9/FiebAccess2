@@ -18,25 +18,43 @@ public class UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}
 	
-	@Transactional
-	public int acessar(String email, String senha) {
+	
+	public Usuario findByEmail(String email) {
 		
 		Usuario usuario = usuarioRepository.findByEmail(email);
 		
+		return usuario;
+	}
+	
+	@Transactional
+	public Usuario salvar(Usuario usuario) {
+		
+		
+		usuario.setStatusUsuario("ATIVO");
+		usuario.setNivelAcesso("USER");
+		usuario.setFoto(null);
+		usuario.setSenha(usuario.getSenha());
+		
+		return usuarioRepository.save(usuario);
+		
+	}
+	
+	
+	@Transactional
+	public Usuario acessar(String email, String senha) {
+		
+		Usuario usuario = usuarioRepository.findByEmail(email);
+		
+		String _senha = senha;
+		
 		if (usuario != null && usuario.getStatusUsuario().equals("ATIVO")) {
 			
-			if (usuario.getSenha().equals(senha)) {
+			if (usuario.getSenha().equals(_senha)) {
 				
-				if (usuario.getNivelAcesso().equals("ADMIN")) {
-					return 1;
-				} else if (usuario.getNivelAcesso().equals("USER")) {
-					return 2;
-				}
-			} else {
-				return 0;
+				return usuario;
 			}
-		} 
-		return 0;	
+		}
+		return null;	 
 	}
 
 }

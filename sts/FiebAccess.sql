@@ -1,4 +1,5 @@
 CREATE DATABASE FiebAccess
+USE FiebAccess
 CREATE TABLE Usuario(
 id                 INT IDENTITY NOT NULL,   
 nome               VARCHAR(100)    NOT NULL,
@@ -12,44 +13,9 @@ statusUsuario      VARCHAR(20)     NOT NULL, -- ATIVO ou INATIVO ou TROCAR_SENHA
 
 PRIMARY KEY (id)
 );
-
 --DROP TABLE Usuario
- 
-
-CREATE TABLE Aluno (
-id_Aluno              INT IDENTITY,   
-id_Usuario            INT,
-nome                  VARCHAR(100)    NOT NULL,
-endereco              VARCHAR(150),
-email                 VARCHAR(100)    NOT NULL,
-senha                 VARCHAR(100)    NOT NULL,
-nivelAcesso           VARCHAR(10)     NULL, -- ADM, TEC ou USER
-foto                  VARBINARY(MAX)  NULL,
-statusUsuario         VARCHAR(20)     NOT NULL, -- ATIVO ou INATIVO ou TROCAR_SENHA
- 
-
-PRIMARY KEY (id_Aluno),
-FOREIGN KEY (id_Usuario) REFERENCES Usuario (id),
-);
- 
---DROP TABLE Aluno
-
- 
-
-CREATE TABLE Consultório (
-   id_Consul        INT IDENTITY,
-   nome             VARCHAR(100)    NOT NULL,
-   email            VARCHAR(100)    NOT NULL,
-   senha            VARCHAR(100)    NOT NULL,
-   nivelAcesso      VARCHAR(10)     NULL, -- ADM, TEC ou USER
-   statusUsuario    VARCHAR(20)     NOT NULL, -- ATIVO ou INATIVO ou TROCAR_SENHA
-
-   
-   PRIMARY KEY (id_Consul)
-);
-
---DROP TABLE Consultório
-
+SELECT * FROM Usuario
+  
 
 CREATE TABLE Categoria (
    id_Categoria      INT IDENTITY,
@@ -59,9 +25,18 @@ CREATE TABLE Categoria (
 
    PRIMARY KEY (id_Categoria)
 );
-
 --DROP TABLE Categoria
  
+ CREATE TABLE Horario (
+   id_Horario INT IDENTITY,
+   horaInicio TIME NOT NULL,
+   horaFim TIME NOT NULL,
+   diaSemana VARCHAR(20) NOT NULL,
+   statusHorario VARCHAR(20) NOT NULL, -- ATIVO ou INATIVO
+
+   PRIMARY KEY (id_Horario)
+);
+--DROP TABLE Horario
 
 CREATE TABLE Profissional (
    id_Prof          INT IDENTITY,
@@ -77,14 +52,27 @@ CREATE TABLE Profissional (
    PRIMARY KEY (id_Prof),
    FOREIGN KEY (id_Categoria) REFERENCES Categoria (id_Categoria),
 );
-
 --DROP TABLE Profissional
---DROP DATABASE FiebAccess
 
+CREATE TABLE Consulta (
+   id_Consulta INT IDENTITY,
+   id_Usuario INT NOT NULL,
+   id_Profissional INT NOT NULL,
+   dataConsulta DATE NOT NULL,
+   horaConsulta TIME NOT NULL,
+   statusConsulta VARCHAR(20) NOT NULL, -- ATIVO, CANCELADO, CONCLUÍDO, etc.
+
+   PRIMARY KEY (id_Consulta),
+   FOREIGN KEY (id_Usuario) REFERENCES Usuario(id), 
+   FOREIGN KEY (id_Profissional) REFERENCES Profissional (id_Prof)
+);
+--DROP TABLE Consulta
+--DROP DATABASE FiebAccess
+--criar consulta
 
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Ana Silva', 'ana@example.com', 'senha123', 'USER', null, '123456789', 'Rua A, 123', 'ATIVO');
+VALUES ('Vinicius Oliveira', 'vinisex0@gmail.com', 'sexo123', 'ADM', null, '123456789', 'Rua A, 123', 'ATIVO');
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
 VALUES ('Rafael Oliveira', 'rafael@example.com', 'senha456', 'USER', null, '987654321', 'Avenida B, 456', 'ATIVO');
@@ -124,46 +112,46 @@ VALUES ('Gustavo Santos', 'gustavo@example.com', 'senha456', 'USER', null, '5555
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
 VALUES ('Carolina Almeida', 'carolina@example.com', 'tec789', 'USER', null, '777777777', 'Rua AE, 2828', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Mariana Santos', 'mariana@example.com', 'admin123', 'USER', null, '999999999', 'Rua D, 101', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Gustavo Alves', 'gustavo@example.com', 'senha456', 'USER', null, '222222222', 'Avenida E, 202', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Camila Silva', 'camila@example.com', 'senha789', 'USER', null, '444444444', 'Rua F, 303', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('João Almeida', 'joao@example.com', 'senha123', 'USER', null, '666666666', 'Avenida G, 404', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Rodrigo Oliveira', 'rodrigo@example.com', 'senha456', 'USER', null, '888888888', 'Rua H, 505', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Larissa Almeida', 'larissa@example.com', 'admin123', 'USER', null, '444444444', 'Avenida S, 1616', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Fernando Alves', 'fernando@example.com', 'senha789', 'USER', null, '666666666', 'Rua T, 1717', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Camila Rodrigues', 'camila@example.com', 'senha123', 'USER', null, '888888888', 'Avenida U, 1818', 'ATIVO');
+
+INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
+VALUES ('Isabela Santos', 'isabela@example.com', 'senha456', 'USER', null, '101010101', 'Rua V, 1919', 'ATIVO');
 --USER
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Mariana Santos', 'mariana@example.com', 'admin123', 'ADM', null, '999999999', 'Rua D, 101', 'ATIVO');
+VALUES ('David Borges Sousa', 'david@example.com', 'senha789', 'ADM', null, '121212121', 'Avenida W, 2020', 'ATIVO');
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Gustavo Alves', 'gustavo@example.com', 'senha456', 'ADM', null, '222222222', 'Avenida E, 202', 'ATIVO');
+VALUES ('Gilmar Wellington Viana de Sousa', 'gil@example.com', 'admin123', 'ADM', null, '999999999', 'Avenida AF, 2929', 'ATIVO');
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Camila Silva', 'camila@example.com', 'senha789', 'ADM', null, '444444444', 'Rua F, 303', 'ATIVO');
+VALUES ('João Pedro Arcanjos', 'joão@example.com', 'senha456', 'ADM', null, '222222222', 'Rua AG, 3030', 'ATIVO');
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('João Almeida', 'joao@example.com', 'senha123', 'ADM', null, '666666666', 'Avenida G, 404', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Rodrigo Oliveira', 'rodrigo@example.com', 'senha456', 'ADM', null, '888888888', 'Rua H, 505', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Larissa Almeida', 'larissa@example.com', 'admin123', 'ADM', null, '444444444', 'Avenida S, 1616', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Fernando Alves', 'fernando@example.com', 'senha789', 'ADM', null, '666666666', 'Rua T, 1717', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Camila Rodrigues', 'camila@example.com', 'senha123', 'ADM', null, '888888888', 'Avenida U, 1818', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Isabela Santos', 'isabela@example.com', 'senha456', 'ADM', null, '101010101', 'Rua V, 1919', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('João Alves', 'joao@example.com', 'senha789', 'ADM', null, '121212121', 'Avenida W, 2020', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Fernando Oliveira', 'fernando@example.com', 'admin123', 'ADM', null, '999999999', 'Avenida AF, 2929', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Camila Almeida', 'camila@example.com', 'senha456', 'ADM', null, '222222222', 'Rua AG, 3030', 'ATIVO');
-
-INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
-VALUES ('Lucas Santos', 'lucas@example.com', 'senha789', 'ADM', null, '444444444', 'Avenida AH, 3131', 'ATIVO');
+VALUES ('Pablo Henrique Alves Peixoto', 'pablo@example.com', 'senha789', 'ADM', null, '444444444', 'Avenida AH, 3131', 'ATIVO');
 --ADM
 
 INSERT INTO Usuario (nome, email, senha, nivelAcesso, foto, telefone, endereço, statusUsuario)
@@ -209,149 +197,6 @@ VALUES ('Mariana Alves', 'mariana@example.com', 'senha123', 'TEC', null, '101010
 --40 Inserts
 
 
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (1, 'Felipe Silva', 'Rua A, 123', 'ana@example.com', 'senha123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (2, 'Enzo Oliveira', 'Avenida B, 456', 'rafael@example.com', 'senha456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (3, 'Felipe Alves', 'Rua C, 789', 'carla@example.com', 'senha789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (4, 'Rodrigo Rodrigues', 'Rua E, 222', 'lucas@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (5, 'Nicolas Santos', 'Rua F, 555', 'patricia@example.com', 'senha123', 'USER', null,'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (6, 'Geovana Almeida', 'Rua G, 777', 'fernanda@example.com', 'senha456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (7, 'Luis Rodrigues', 'Rua N, 1111', 'fernando@example.com', 'senha123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (8, 'Gabriela Alves', 'Avenida O, 1212', 'carolina@example.com', 'senha456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (9, 'Gabriele Silva', 'Rua P, 1313', 'ricardo@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (10, 'Luisa Rodrigues', 'Avenida Q, 1414', 'amanda@example.com', 'senha123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (11, 'Gepeto Oliveira', 'Rua R, 1515', 'gustavo@example.com', 'senha456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (12, 'Milene Rodrigues', 'Rua AC, 2626', 'luisa@example.com', 'senha123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (13, 'Fernando Santos', 'Avenida AD, 2727', 'gustavo@example.com', 'senha456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (14, 'Juca Almeida', 'Rua AE, 2828', 'carolina@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (15, 'Pedro Almeida', 'Rua AF, 2929', 'pedro@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (16, 'Amanda Santos', 'Rua AG, 3030', 'amanda@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (17, 'Lucas Oliveira', 'Avenida AH, 3131', 'lucas@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (18, 'Camila Alves', 'Rua AI, 3232', 'camila@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (19, 'Rodrigo Almeida', 'Avenida AJ, 3333', 'rodrigo@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (20, 'Isabela Rodrigues', 'Rua AK, 3434', 'isabela@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (21, 'Maria Alves', 'Rua AM, 3535', 'maria@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (22, 'Gustavo Santos', 'Avenida AN, 3636', 'gustavo@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (23, 'Carla Oliveira', 'Rua AO, 3737', 'carla@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (24, 'Luciana Almeida', 'Avenida AP, 3838', 'luciana@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (25, 'Ricardo Alves', 'Rua AQ, 3939', 'ricardo@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (26, 'Ana Oliveira', 'Avenida AR, 4040', 'ana@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (27, 'Fernando Almeida', 'Rua AS, 4141', 'fernando@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (28, 'Camila Santos', 'Avenida AT, 4242', 'camila@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (29, 'João Almeida', 'Rua AU, 4343', 'joao@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (30, 'Larissa Oliveira', 'Avenida AV, 4444', 'larissa@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (31, 'Gustavo Almeida', 'Rua AX, 4545', 'gustavo@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (32, 'Mariana Santos', 'Avenida AY, 4646', 'mariana@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (33, 'Pedro Almeida', 'Rua AZ, 4747', 'pedro@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (34, 'Amanda Oliveira', 'Avenida BA, 4848', 'amanda@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (35, 'Lucas Alves', 'Rua BB, 4949', 'lucas@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (36, 'Carla Almeida', 'Avenida BC, 5050', 'carla@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (37, 'Fernando Santos', 'Rua BD, 5151', 'fernando@example.com', 'tec456', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (38, 'Camila Alves', 'Avenida BE, 5252', 'camila@example.com', 'tec789', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (39, 'João Oliveira', 'Rua BF, 5353', 'joao@example.com', 'tec123', 'USER', null, 'ATIVO');
-
-INSERT INTO Aluno (id_Usuario, nome, endereco, email, senha, nivelAcesso, foto, statusUsuario)
-VALUES (40, 'Larissa Almeida', 'Avenida BG, 5454', 'larissa@example.com', 'tec456', 'USER', null, 'ATIVO');
---ALUNO
---40 Inserts
-
-
-
-INSERT INTO Consultório (nome, email, senha, nivelAcesso, statusUsuario)
-VALUES ('Consultório A', 'consultorioA@example.com', 'senha123', 'USER', 'ATIVO');
-
-INSERT INTO Consultório (nome, email, senha, nivelAcesso, statusUsuario)
-VALUES ('Consultório B', 'consultorioB@example.com', 'senha456', 'USER', 'ATIVO');
---USER
-
-INSERT INTO Consultório (nome, email, senha, nivelAcesso, statusUsuario)
-VALUES ('Consultório C', 'consultorioC@example.com', 'admin123', 'ADM', 'ATIVO');
---ADM
-
-INSERT INTO Consultório (nome, email, senha, nivelAcesso, statusUsuario)
-VALUES ('Consultório D', 'consultorioD@example.com', 'tec123', 'TEC', 'ATIVO');
-
-INSERT INTO Consultório (nome, email, senha, nivelAcesso, statusUsuario)
-VALUES ('Consultório E', 'consultorioE@example.com', 'tec456', 'TEC', 'ATIVO');
---TEC
---Consultório
-
 
 
 INSERT INTO Categoria (nome, descricao, statusCategoria)
@@ -370,6 +215,16 @@ INSERT INTO Categoria (nome, descricao, statusCategoria)
 VALUES ('Categoria 5', 'Dentista', 'INATIVO');
 --Categoria
 
+
+INSERT INTO Horario (horaInicio, horaFim, diaSemana, statusHorario)
+VALUES ('08:00:00', '09:00:00', 'Segunda-feira', 'ATIVO');
+
+INSERT INTO Horario (horaInicio, horaFim, diaSemana, statusHorario)
+VALUES ('10:00:00', '11:00:00', 'Terça-feira', 'ATIVO');
+
+INSERT INTO Horario (horaInicio, horaFim, diaSemana, statusHorario)
+VALUES ('14:00:00', '15:00:00', 'Quarta-feira', 'INATIVO');
+--Horario
 
 
 INSERT INTO Profissional (id_Categoria, nome, email, senha, nivelAcesso, foto, statusUsuario)
@@ -427,26 +282,27 @@ INSERT INTO Profissional (id_Categoria, nome, email, senha, nivelAcesso, foto, s
 VALUES (5, 'Thiago Pereira', 'profissional3@example.com', 'senha789', 'USER', null, 'INATIVO');
 --Profissional
 
+-- Inserir uma consulta agendada com um paciente e um profissional existentes
+INSERT INTO Consulta (id_Usuario, id_Profissional, dataConsulta, horaConsulta, statusConsulta)
+VALUES (1, 2, '2023-08-30', '14:00:00', 'ATIVO');
+
+-- Inserir outra consulta agendada com um paciente e um profissional existentes
+INSERT INTO Consulta (id_Usuario, id_Profissional, dataConsulta, horaConsulta, statusConsulta)
+VALUES (3, 4, '2023-09-05', '10:30:00', 'ATIVO');
+
+-- Inserir uma consulta cancelada com um paciente e um profissional existentes
+INSERT INTO Consulta (id_Usuario, id_Profissional, dataConsulta, horaConsulta, statusConsulta)
+VALUES (5, 6, '2023-09-10', '16:00:00', 'Inativo');
+
 
 select * from Usuario
 UPDATE Usuario set senha = '123' where id=1
 
 
 
-
-select * from Aluno
-
-
-
-
-
-
-select * from Consultório
-
-
 select * from Categoria
-
-
+select * from Consulta
+select * from Horario
 
 select * from Profissional
 
