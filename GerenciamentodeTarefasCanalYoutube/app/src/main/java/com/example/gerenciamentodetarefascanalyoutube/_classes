@@ -1,0 +1,19 @@
+https://www.journaldev.com/20292/android-mvvm-design-pattern
+
+Configure -> build.gradle with implementation ROOM MVVM
+
+Create classes in this sequence:
+
+1 - Task (model entity)
+2 - TaskDao (interface)
+3 - DbRoomDatabase (connect database)
+4 - TaskRepository (CRUD background)
+5 - TaskViewModel (ViewModel - How to CRUD)
+6 - TaskAdapter (To connect data values for show app, with:
+                    a. RecyclerView
+                    b. Widgets in activity)
+6.1 - DatePickerFragment (To select day)
+7 - TaskAddEditActivity (Add / Edit)
+8 - TaskActivity (Show RecyclerView) --ATTENTION: import SearchView--
+
+Configure -> AndroidManifest.xml
