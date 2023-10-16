@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="/sts\fiebaccess\src\main\resources\static\css\styles.css" rel="stylesheet">
 </head>
 <body>
     <div class="login-box">
@@ -14,7 +14,7 @@
 				<input type="email" th:field="*{email}"
 					id="inputEmail">
 			</div>
-			<div class="user-box">
+			<div class="user-box">	
 				<label for="inputSenha" class="LabelFoda">Senha:</label>
 				<input type="password" th:field="*{senha}"
 					id="inputSenha">
@@ -22,15 +22,17 @@
 			<div class="text-center p-2 rounded-2">
 				<span th:text="${serverMessage}" style="color: #58e336;"></span>
 			</div>
-    <button type="submit" >
+    <a href="/src/main/resources/templates/land.html">
+
       <span></span>
       <span></span>
       <span></span>
       <span></span>
     
       Junte-se a Nós
-    </button>
-   
+	</a>
+
+		</script>
 		</form>
     </div>
     <script type="text/javascript" src="js/scripts.js"></script>
