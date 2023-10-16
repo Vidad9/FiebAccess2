@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <title>
       FIEB ACCESS - Agilidade e Compromisso
     </title>
     <meta name="description" content="Simple landind page" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
+    <link href="/sts\fiebaccess\src\main\resources\static\css\land.css">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
@@ -42,13 +46,13 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" th:href="@{/login}">Login</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="index.html">Login</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" th:href="@{/prof}">Profissionais</a>
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="prof.html">Profissionais</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" th:href="@{/perfil}">Perfil</a>
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="perfil.html">Perfil</a>
             </li>
           </ul>
           
@@ -60,7 +64,7 @@
     
         <!--Right Col-->
         <div class="w-full md:w-3/5 py-6 text-center">
-     
+     <h1> </h1>
         </div>
       </div>
     </div>
@@ -84,6 +88,29 @@
       </svg>
     </div>
     <section class="bg-white border-b py-8">
+
+      
+      
+      <!-- SWIPER -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          
+
+
+
+
+
+          
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+
       <div class="container max-w-5xl mx-auto m-8">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           Alguns dos nossos profissionais
@@ -97,7 +124,9 @@
               Dentistas
             </h3>
             <p class="text-gray-600 mb-8">
-              Nosso sistema conta com a possibilidade de se consultar com dentistas. É de imensa importância cuidar dos dentes, eleva nossa saúde e a autoestima.
+              É de imensa importância cuidar dos dentes, eleva nossa saúde e ter um belo sorriso aumenta a autoestima. 
+              <br>  
+               Por isso, nós contamos com diversos consultórios de dentistas especializados com diversas formações acadêmicas e extenso histórico clínico de boa reputação.
               <br />
               <br />
 
@@ -105,7 +134,7 @@
             </p>
           </div>
           <div class="w-full sm:w-1/2 p-6">
-            <img src="mdc.svg" alt="">
+            <img id="1" src="/sts\fiebaccess\src\main\resources\static\image\mdc.svg" alt="">
             <svg class="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="https://storyset.com/office">
               <title></title>
              
@@ -114,7 +143,8 @@
         </div>
         <div class="flex flex-wrap flex-col-reverse sm:flex-row">
           <div class="w-full sm:w-1/2 p-6 mt-6">
-            <img src="md.svg" alt="">
+            <img id="2" src="/sts\fiebaccess\src\main\resources\static\image\md.svg" alt="">
+
             <svg class="w-5/6 sm:h-64 mx-auto" viewBox="0 0 1176.60617 873.97852" xmlns="http://www.w3.org/2000/svg">
               <title>connected world</title>
               
@@ -126,7 +156,7 @@
                   Nutricionistas
               </h3>
               <p class="text-gray-600 mb-8">
-               Conte com o acompanhamento de profissionais especializados em saúde alimentar.
+               Conte com o acompanhamento de nossos profissionais especializados em saúde alimentar, dieta esportiva, dietas vegenas e entre outras modalidades. 
                 <br />
                 <br />
                 
@@ -162,7 +192,7 @@
             <div class="flex items-center justify-start">
               <a button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=5e3ce6c0-2b1f-4285-8d4b-75ee78787346&scope=https%3A%2F%2Fapi.spaces.skype.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Fteams.microsoft.com%2Fgo&client-request-id=7e08f394-1050-4f79-a9b3-65290c535c38&response_mode=fragment&response_type=code&x-client-SKU=msal.js.browser&x-client-VER=2.19.0&x-client-OS=&x-client-CPU=&client_info=1&code_challenge=X81gUUJynwJu2c8qUhIofeedsnlBtaLGRheCurYdcSA&code_challenge_method=S256&prompt=select_account&nonce=b80cbbcf-6a51-4db9-82f1-ee2530f09262&state=eyJpZCI6IjFhMTg3ZDY3LWQ1MDktNDhlYS04YWM3LWYxZjIyM2YyNzg4MiIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D">
                 Entrar no Teams
-              </a>
+              </a button>
             </div>
           </div>
         </div>
@@ -213,7 +243,7 @@
     </section>
     
         
-            <d/>
+          
               </div>
             </div>
           </div>
@@ -244,17 +274,18 @@
     </svg>
     <section class="container mx-auto text-center py-6 mb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-        Chegou a Hora
+        Conte com a gente
       </h2>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <h3 class="my-4 text-3xl leading-tight">
-        Seja o Melhor para Você Mesmo!
+        Seja o Melhor para Você Mesmo
       </h3>
-      
+       
     </section>
     <!--Footer-->
+    
     <footer class="bg-white">
       <div class="container mx-auto px-8">
         <div class="w-full flex flex-col md:flex-row py-6">
@@ -269,13 +300,13 @@
             <p class="uppercase text-gray-500 md:mb-6">Links</p>
             <ul class="list-reset mb-6">
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Help</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Ajuda</a>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Support</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Suporte</a>
               </li>
             </ul>
           </div>
@@ -283,32 +314,33 @@
             <p class="uppercase text-gray-500 md:mb-6">Legal</p>
             <ul class="list-reset mb-6">
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Terms</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Termos</a>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacy</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacidade</a>
               </li>
             </ul>
           </div>
          
           <div class="flex-1">
-            <p class="uppercase text-gray-500 md:mb-6">Company</p>
+            <p class="uppercase text-gray-500 md:mb-6">Compania</p>
             <ul class="list-reset mb-6">
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Official Blog</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sobre nós</a>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">About Us</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html"class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sociedade</a>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contact</a>
+                <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contate-nos</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector created by freepik - www.freepik.com</a>
+      <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500"></a>
     </footer>
+
     <!-- jQuery if you need it
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   -->
