@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.edit-button {
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0080ff;
+}
+
+    </style>
+    <h1>Painel de Administração</h1>
+    <table class="schedule">
+        <tr>
+            <th>Horário</th>
+            <th>Especialidade</th>
+            <th>Ações</th>
+        </tr>
+        <!-- Exibir informações existentes aqui (pode ser dinâmico) -->
+        <tr>
+            <td>09:00 - 10:00</td>
+            <td>Dentista</td>
+            <td><button class="edit-button">Editar</button></td>
+        </tr>
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td>Dentista</td>
+            <td><button class="edit-button">Editar</button></td>
+        </tr>
+        <!-- Adicione mais linhas conforme necessário -->
+    </table>
+    <script>
+        // Função para lidar com o clique no botão "Editar"
+function handleEditButtonClick(event) {
+    const button = event.target;
+    const row = button.parentElement.parentElement;
+    const timeSlot = row.querySelector('td:first-child').textContent;
+    const speciality = row.querySelector('td:nth-child(2)').textContent;
+
+    // Exibir um prompt para editar as informações
+    const newTimeSlot = prompt('Editar Horário:', timeSlot);
+    const newSpeciality = prompt('Editar Especialidade:', speciality);
+
+    // Atualizar as informações na tabela
+    if (newTimeSlot && newSpeciality) {
+        row.querySelector('td:first-child').textContent = newTimeSlot;
+        row.querySelector('td:nth-child(2)').textContent = newSpeciality;
+    }
+}
+
+// Adicione um ouvinte de eventos para cada botão "Editar"
+const editButtons = document.querySelectorAll('.edit-button');
+editButtons.forEach(button => {
+    button.addEventListener('click', handleEditButtonClick);
+});
+
+    </script>
+</body>
+</html>
