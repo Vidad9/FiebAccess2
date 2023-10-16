@@ -15,8 +15,7 @@
                 <img src="pablo.png" alt="Pablo Henrique">
             </div>
             <div class="title">
-                <h1>
-                   Pablo Henrique
+                <h1 th:text="${session.usuarioLogado.nome}">
                 </h1>
                 <p>
                     17 anos | Trabalho como Piscineiro <br> Limpando piscinas
@@ -46,7 +45,7 @@
             </div>
 
             <div class="con-posts">
-                <a class="post" target="_blank" href="prof.html">
+                <a class="post" target="_blank" th:href="@{/prof}">
                     <div class="con-file">
                         <img src="nut.jpg" alt="">
                     </div>

@@ -1,5 +1,8 @@
 package br.itb.projeto.fiebaccess.control;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.itb.projeto.fiebaccess.model.entity.Consulta;
 import br.itb.projeto.fiebaccess.model.entity.Usuario;
+import br.itb.projeto.fiebaccess.model.service.ConsultaService;
 import br.itb.projeto.fiebaccess.model.service.UsuarioService;
 
 
@@ -17,10 +22,12 @@ import br.itb.projeto.fiebaccess.model.service.UsuarioService;
 public class UsuarioController {
 	
 	private UsuarioService usuarioService;
+	private ConsultaService consultaService;
 
-	public UsuarioController(UsuarioService usuarioService) {
+	public UsuarioController(UsuarioService usuarioService, ConsultaService consultaService) {
 		super();
 		this.usuarioService = usuarioService;
+		this.consultaService = consultaService;
 	}
 	
 	private String serverMessage = null;
@@ -70,7 +77,6 @@ public class UsuarioController {
 		
 		model.addAttribute("usuario", new Usuario());
 		
-		
 		return "index";
 	}
 	
@@ -106,5 +112,43 @@ public class UsuarioController {
 		
 		return "adm";
 	}
-
+	
+	@GetMapping("/land")
+	public String getland(ModelMap model) {
+		
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("serverMessage", serverMessage);
+		
+		return "land";
+	}
+	
+	@GetMapping("/agendar")
+	public String getagendar(ModelMap model) {
+		
+		List<Consulta> consultas = consultaService.findAll();
+		List<Consulta> consultasAtivas = consultas.stream()
+	            .filter(consulta -> consulta.getStatusConsulta().equals("ATIVO"))
+	            .collect(Collectors.toList());
+		model.addAttribute("consultas", consultasAtivas);
+		
+		return "agendar";
+	}
+	
+	@GetMapping("/perfil")
+	public String getperfil(ModelMap model) {
+		
+		
+		model.addAttribute("serverMessage", serverMessage);
+		
+		return "perfil";
+	}
+	
+	@GetMapping("/prof")
+	public String getprof(ModelMap model) {
+		
+		model.addAttribute("prof", new Usuario());
+		model.addAttribute("serverMessage", serverMessage);
+		
+		return "prof";
+	}
 }
