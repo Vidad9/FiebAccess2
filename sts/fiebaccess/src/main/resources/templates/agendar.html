@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento de Consulta</title>
-    <link rel="stylesheet" href="styles.css">
+
+   
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<title>Agendamento de Consulta</title>
+<link rel="stylesheet" href="agenda.css">
+    <meta name="description" content="Simple landind page" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
-<body>
-
-    <div class="con-menu">
-        <button onclick="handleClick(event, 'con-links')" class="active">
-            Agendamentos
-        </button>
-        <button onclick="handleClick(event, 'con-posts')">
-            Profissionais 
-        </button>
-       <a href="land.html">          
-        <button onclick="voltarParaTelaEspecifica()">Voltar</button>
-
-<script>
-    function voltarParaTelaEspecifica() {
-        // Use history.go(-n) para voltar a uma página específica no histórico
-        // Substitua 'n' pelo número de páginas que você deseja retroceder
-        history.go(-2); // Por exemplo, retroceder 2 páginas
-    }
-</script>
-    </a>
-    </div>
-
+<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
 
     <style>
         body {
@@ -47,20 +55,112 @@ th, td {
 }
 
 .book-button {
-    background-color: #00bfff;
+    background-color: purple;
     color: #fff;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+
 }
 
 .book-button:hover {
-    background-color: #0080ff;
+    background-color: purple;
+    color: white;
+}
+.back button:hover{
+    background-color: rgba(148, 7, 204, 0.966);
+
 }
 
+.back button{
+    background-color: rgb(245, 235, 245);
+    border:1px inset #5E366A;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin: 1%;
+
+}
+
+.wrap table{
+    border: 2px outset purple;
+}
+.wrap {
+    color: black;
+}
+ .title h1{
+    background: linear-gradient(0.25turn, #5E366A, #ebf8e1,rgb(167, 2, 167));
+    border: 1px inset rgb(158, 154, 158);
+    padding: 1%;
+    font-weight: 800;
+    font-size: 200%;
+    font-family:'Times New Roman', Times, serif;
+
+}
+.back{
+    max-height: fit-content;
+    margin-bottom: 30%;
+
+}
+.back h1{
+    color: rgb(64, 63, 65);
+    text-shadow: 1px 1px black;
+
+}
+.gradient {
+        background: white;
+      }
+      .back button{
+        color: black;
+
+      }
+
+      .container.mx-auto.px-8 {
+        background: linear-gradient(0.25turn, #5E366A, purple);
+        
+      }
+
+      .flex-1 a{
+        color: white;
+      }
+
+      .container.mx-auto.px-8 p{
+        color: white;
+      }
+      .flex-1.mb-6.text-black a{
+        color: #ff1d8e;
+      
+      }
     </style>
 
+
+
+
+
+
+<div class="back">
+<div class="title">
     <h1>Agendamento de Consulta</h1>
+</div>
+    <div class="con-menu">
+        <button onclick="handleClick(event, 'con-links')" class="active">
+            Agendamentos
+        </button>
+        <button onclick="handleClick(event, 'con-posts')">
+            Profissionais 
+        </button>
+       <a href="land.html">          
+        <button onclick="voltarParaTelaEspecifica()">Voltar</button>
+
+<script>
+    function voltarParaTelaEspecifica() {
+        // Use history.go(-n) para voltar a uma página específica no histórico
+        // Substitua 'n' pelo número de páginas que você deseja retroceder
+        history.go(-2); // Por exemplo, retroceder 2 páginas
+    }
+</script>
+    </a>
+    </div>
+    <div class="wrap">
     <form action="AgendamentoServlet" method="post">
     <table class="schedule" th:each="consulta : ${consultas}">
         <tr>
@@ -70,6 +170,7 @@ th, td {
             <th>Horário</th>
             <th>Dia da Semana</th>
         </tr>
+   
         <!-- Adicione os horários fixos e suas especialidades aqui -->
         <tr th:each="consulta : ${consultas}">
         	<td th:text="${consulta.profissional.nome}"></td>
@@ -81,6 +182,149 @@ th, td {
         <!-- Adicione mais horários e especialidades conforme necessário -->
     </table>
 </form>
+</div>
+</div>
     <script src="script.js"></script>
+    <footer class="bg-white">
+        <div class="container mx-auto px-8">
+          <div class="w-full flex flex-col md:flex-row py-6">
+            <div class="flex-1 mb-6 text-black">
+              <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                <!--Icon from: http://www.potlabicons.com/ -->
+    <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+        <!--Icon from: http://www.potlabicons.com/ -->
+        
+        FIEB ACCESS
+      </a>
+    </div>
+    <div class="flex-1">
+      <p class="uppercase text-gray-500 md:mb-6">Links</p>
+      <ul class="list-reset mb-6">
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
+        </li>
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Ajuda</a>
+        </li>
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Suporte</a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-1">
+      <p class="uppercase text-gray-500 md:mb-6">Legal</p>
+      <ul class="list-reset mb-6">
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Termos</a>
+        </li>
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacidade</a>
+        </li>
+      </ul>
+    </div>
+   
+    <div class="flex-1">
+      <p class="uppercase text-gray-500 md:mb-6">Compania</p>
+      <ul class="list-reset mb-6">
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sobre nós</a>
+        </li>
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html"class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sociedade</a>
+        </li>
+        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contate-nos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500"></a>
+</footer>
+
+<!-- jQuery if you need it
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+-->
+<script>
+var scrollpos = window.scrollY;
+var header = document.getElementById("header");
+var navcontent = document.getElementById("nav-content");
+var navaction = document.getElementById("navAction");
+var brandname = document.getElementById("brandname");
+var toToggle = document.querySelectorAll(".toggleColour");
+
+document.addEventListener("scroll", function () {
+  /*Apply classes for slide in bar*/
+  scrollpos = window.scrollY;
+
+  if (scrollpos > 10) {
+    header.classList.add("bg-white");
+    navaction.classList.remove("bg-white");
+    navaction.classList.add("gradient");
+    navaction.classList.remove("text-gray-800");
+    navaction.classList.add("text-white");
+    //Use to switch toggleColour colours
+    for (var i = 0; i < toToggle.length; i++) {
+      toToggle[i].classList.add("text-gray-800");
+      toToggle[i].classList.remove("text-white");
+    }
+    header.classList.add("shadow");
+    navcontent.classList.remove("bg-gray-100");
+    navcontent.classList.add("bg-white");
+  } else {
+    header.classList.remove("bg-white");
+    navaction.classList.remove("gradient");
+    navaction.classList.add("bg-white");
+    navaction.classList.remove("text-white");
+    navaction.classList.add("text-gray-800");
+    //Use to switch toggleColour colours
+    for (var i = 0; i < toToggle.length; i++) {
+      toToggle[i].classList.add("text-white");
+      toToggle[i].classList.remove("text-gray-800");
+    }
+
+    header.classList.remove("shadow");
+    navcontent.classList.remove("bg-white");
+    navcontent.classList.add("bg-gray-100");
+  }
+});
+</script>
+<script>
+/*Toggle dropdown list*/
+/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+var navMenuDiv = document.getElementById("nav-content");
+var navMenu = document.getElementById("nav-toggle");
+
+document.onclick = check;
+function check(e) {
+  var target = (e && e.target) || (event && event.srcElement);
+
+  //Nav Menu
+  if (!checkParent(target, navMenuDiv)) {
+    // click NOT on the menu
+    if (checkParent(target, navMenu)) {
+      // click on the link
+      if (navMenuDiv.classList.contains("hidden")) {
+        navMenuDiv.classList.remove("hidden");
+      } else {
+        navMenuDiv.classList.add("hidden");
+      }
+    } else {
+      // click both outside link and outside menu, hide menu
+      navMenuDiv.classList.add("hidden");
+    }
+  }
+}
+function checkParent(t, elm) {
+  while (t.parentNode) {
+    if (t == elm) {
+      return true;
+    }
+    t = t.parentNode;
+  }
+  return false;
+}
+</script>
 </body>
 </html>
