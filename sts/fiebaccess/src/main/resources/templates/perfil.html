@@ -11,16 +11,9 @@
 <body>
     <div class="content">
         <div class="con-user">
-            <div class="avatar">
-                <img src="pablo.png" alt="Pablo Henrique">
-            </div>
             <div class="title">
-                <h1>
-                   Pablo Henrique
-                </h1>
-                <p>
-                    17 anos | Trabalho como Piscineiro <br> Limpando piscinas
-                </p>
+                <h1 th:text="${session.usuarioLogado.nome}"></h1>
+                <p th:text="${session.usuarioLogado.email}"/p>
             </div>
         </div>
         <div class="con-menu">
@@ -30,16 +23,6 @@
             <button onclick="handleClick(event, 'con-posts')">
                 Consultas
             </button>
-            <button id="botaoVoltar">Voltar</button>
-
-            <script>
-                // Adicione um ouvinte de evento ao botão "Voltar"
-                document.getElementById('botaoVoltar').addEventListener('click', function() {
-                    // Use window.history.back() para voltar para a página anterior
-                    window.history.back();
-                });
-            </script>
-
         </div>
         <div class="con-contents">
             <div class="con-links">
@@ -56,21 +39,20 @@
             </div>
 
             <div class="con-posts">
-                <a class="post" target="_blank" href="prof.html">
-                    <div class="con-file">
-                        <img src="nut.jpg" alt="">
-                    </div>
-
-                    <footer>
-                        <h6>Dra. Natália</h6>
-                        <p>
-                          <strong>Consulta com Nutricionista</strong>  
-                        </p>
-                    </footer>
-
-                    <div class="effect"></div>
-                </a>
-               
+                <div th:if="${consultas.isEmpty()}">
+                	<span>Você não tem nenhuma consulta agendada...</span>
+                </div>
+               <div th:unless="${consultas.isEmpty()}" class="foTainer">
+               		<div th:each="consulta : ${consultas}" class="cardContainer">
+               		<div><label class="labelC">Nome do Usuário:</label>	<span th:text="${consulta.usuario.nome}"></span></div>
+               		<div><label class="labelC">Nome do Profissional:</label>	<span th:text="${consulta.profissional.nome}"></span></div>
+               		<div><label class="labelC">Especialidade: </label>		<span th:text="${consulta.profissional.categoria.descricao}"></span></div>
+               		<div><label class="labelC">Data:</label>		<span th:text="${consulta.dataConsulta}"></span></div>
+               		<div><label class="labelC">Horário: </label>	<span th:text="${consulta.horario.horaInicio} + ' - ' + ${consulta.horario.horaFim}"></span></div>
+               		<hr>
+               		</div>
+               		
+               </div>
                 
                 
                 
@@ -145,6 +127,26 @@
         font-family: 'Poppins', sans-serif;
         box-sizing: border-box;
     }
+    
+    .foTainer{
+		
+		display: flex;
+		flex-direction: column;
+		gap:1em;
+	}
+	
+    .cardContainer{
+		border-radius:0.25em;
+		display: flex;
+		flex-direction: column;
+		padding:10px;
+		background-color:rgb(192, 192, 192)
+	}
+    
+    .labelC{
+		font-weight:600;
+	}
+    
     .content {
         width: 100%;
         display: flex;

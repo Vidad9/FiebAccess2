@@ -1,5 +1,7 @@
 package br.itb.projeto.fiebaccess.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.itb.projeto.fiebaccess.model.entity.Consulta;
 import br.itb.projeto.fiebaccess.model.entity.Usuario;
+import br.itb.projeto.fiebaccess.model.service.ConsultaService;
 import br.itb.projeto.fiebaccess.model.service.UsuarioService;
 
 
@@ -17,10 +21,12 @@ import br.itb.projeto.fiebaccess.model.service.UsuarioService;
 public class UsuarioController {
 	
 	private UsuarioService usuarioService;
+	private ConsultaService consultaService;
 
-	public UsuarioController(UsuarioService usuarioService) {
+	public UsuarioController(UsuarioService usuarioService, ConsultaService consultaService) {
 		super();
 		this.usuarioService = usuarioService;
+		this.consultaService = consultaService;
 	}
 	
 	private String serverMessage = null;
@@ -45,7 +51,6 @@ public class UsuarioController {
 		if (usuario != null) {
 			
 			session.setAttribute("usuarioLogado", usuario);
-			model.addAttribute("usuario", usuario);
 			
 			if (usuario.getNivelAcesso().equals("ADM")) {
 				
@@ -53,7 +58,7 @@ public class UsuarioController {
 				
 			} else if (usuario.getNivelAcesso().equals("USER")) {
 				
-				return "redirect:/user/home";
+				return "redirect:/home";
 				
 			}
 	
@@ -69,7 +74,6 @@ public class UsuarioController {
 	public String getRegistro(ModelMap model) {
 		
 		model.addAttribute("usuario", new Usuario());
-		
 		
 		return "index";
 	}
@@ -105,6 +109,25 @@ public class UsuarioController {
 	public String getHomeAdm(ModelMap model) {
 		
 		return "adm";
+	}
+	
+	@GetMapping("/home")
+	public String getHome(ModelMap model, HttpSession session) {
+		
+		session.setAttribute("usuarioLogado", session.getAttribute("usuarioLogado"));
+		
+		return "landLogado";
+	}
+	
+	@GetMapping("/perfil")
+	public String getPerfil(ModelMap model, HttpSession session) {
+		
+		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+		long userId = usuarioLogado.getId();
+		List<Consulta> consultas = consultaService.getConsultasDoUsuario(userId);
+		model.addAttribute("consultas", consultas);
+		
+		return "perfil";
 	}
 
 }

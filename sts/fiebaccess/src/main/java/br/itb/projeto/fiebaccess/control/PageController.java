@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 	
-
+@GetMapping("/")
+public String getIndex() {
+	return "land1";
+}
 	
 	
 

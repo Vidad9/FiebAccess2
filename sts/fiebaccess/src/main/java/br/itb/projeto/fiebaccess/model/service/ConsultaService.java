@@ -10,6 +10,7 @@ import br.itb.projeto.fiebaccess.model.repository.ConsultaRepository;
 @Service
 public class ConsultaService {
 	
+	
 	private ConsultaRepository consultaRepository;
 	
 	public ConsultaService(ConsultaRepository consultaRepository) {
@@ -24,5 +25,9 @@ public class ConsultaService {
 		return consultaRepository.findAll();
 	}
 	
+	
+	public List<Consulta> getConsultasDoUsuario(long id){
+		return consultaRepository.findByUsuarioId(id);
+	}
 	
 }
