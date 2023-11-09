@@ -7,11 +7,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<title>Agendamento de Consulta</title>
-<link rel="stylesheet" href="agenda.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <title>Agendamento de Consulta</title>
+    <link rel="stylesheet" href="/sts\fiebaccess\src\main\resources\static\css\agenda.css">
     <meta name="description" content="Simple landind page" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
@@ -68,7 +68,7 @@ th, td {
     color: white;
 }
 .back button:hover{
-    background-color: rgba(148, 7, 204, 0.966);
+    background-color: rgb(205, 150, 226);
 
 }
 
@@ -88,7 +88,7 @@ th, td {
     color: black;
 }
  .title h1{
-    background: linear-gradient(0.25turn, #5E366A, #ebf8e1,rgb(167, 2, 167));
+  background: linear-gradient(90deg , #341246 0% , #703c80 100%);
     border: 1px inset rgb(158, 154, 158);
     padding: 1%;
     font-weight: 800;
@@ -102,8 +102,8 @@ th, td {
 
 }
 .back h1{
-    color: rgb(64, 63, 65);
-    text-shadow: 1px 1px black;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px rgb(236, 199, 230);
 
 }
 .gradient {
@@ -130,6 +130,11 @@ th, td {
         color: #ff1d8e;
       
       }
+      .wrap i:hover{
+        color: rgb(0, 255, 55);
+     
+
+    }
     </style>
 
 
@@ -142,12 +147,10 @@ th, td {
     <h1>Agendamento de Consulta</h1>
 </div>
     <div class="con-menu">
-        <button onclick="handleClick(event, 'con-links')" class="active">
-            Agendamentos
+        <button onclick="handleClick(event, 'con-links')" type="submit" class="active">
+            Confirmar Consulta
         </button>
-        <button onclick="handleClick(event, 'con-posts')">
-            Profissionais 
-        </button>
+       
        <a href="land.html">          
         <button onclick="voltarParaTelaEspecifica()">Voltar</button>
 
@@ -169,15 +172,19 @@ th, td {
             <th>Data</th>
             <th>Horário</th>
             <th>Dia da Semana</th>
+            <th>Marcar Consulta</th>
         </tr>
+
    
         <!-- Adicione os horários fixos e suas especialidades aqui -->
         <tr th:each="consulta : ${consultas}">
         	<td th:text="${consulta.profissional.nome}"></td>
         	<td th:text="${consulta.profissional.categoria.descricao}"></td>
-            <td th:text="${consulta.dataConsulta}"></td>
-            <td th:text="${consulta.horario.horaInicio} + ' - ' + ${consulta.horario.horaFim}"></td>
-            <td th:text="${consulta.horario.diaSemana}"></td>
+          <td th:text="${consulta.dataConsulta}"></td>
+          <td th:text="${consulta.horario.horaInicio} + ' - ' + ${consulta.horario.horaFim}"></td>
+          <td th:text="${consulta.horario.diaSemana}"></td>
+          <td style="cursor: pointer;"><a th:href="@{seu-link-para-marcar}"><i id="1" class="fa-regular fa-calendar-days"></i></a></td>
+          <!--- (colocar ids nas consultas)-->
         </tr>
         <!-- Adicione mais horários e especialidades conforme necessário -->
     </table>
@@ -245,6 +252,23 @@ th, td {
 <!-- jQuery if you need it
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 -->
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Descrição</th>
+    <th>Ações</th>
+  </tr>
+  <tr th:each="consulta : ${consultas}">
+    <td th:text="${consulta.idConsulta}"></td>
+    <td th:text="${consulta.descricao}"></td>
+    <td>
+       
+    </td>
+  </tr>
+  </table>
+  
+
 <script>
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");

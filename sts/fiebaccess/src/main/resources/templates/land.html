@@ -22,6 +22,23 @@
       .gradient {
         background: linear-gradient(90deg , #341246 0% , #703c80 100%);
       }
+      
+      
+      .heading a{
+        color: rgb(255, 255, 255);
+        text-shadow: 1px 1px black;
+        background: #703c8060 30%;
+        border-top-left-radius: 25%;
+        border-top-right-radius: 25%;
+        border-bottom-left-radius: 25% ;
+        border-bottom-right-radius: 25%;
+
+
+      }
+      .heading a:hover{
+        color: #a77db4;
+      }
+      
     </style>
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -43,20 +60,22 @@
             </svg>
           </button>
         </div>
+        <div class="heading">
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="index.html">Login</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="land1.html">Logout</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="prof.html">Profissionais</a>
+              <a class="inline-block text-black no-underline font-bold hover:text-gray-800 hover:text-underline py-2 px-4" href="prof.html">Profissionais</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="perfil.html">Perfil</a>
+              <a class="inline-block text-black no-underline font-bold hover:text-gray-800 hover:text-underline py-2 px-4" href="perfil.html">Perfil</a>
             </li>
           </ul>
           
         </div>
+      </div>
       </div>
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
