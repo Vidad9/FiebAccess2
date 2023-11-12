@@ -30,8 +30,8 @@ public class Consulta {
     private Horario horario; // Certifique-se de que o nome da propriedade corresponda ao mapeamento correto no banco de dados
     
     @ManyToOne
-    @JoinColumn(name = "id_Profissional")
-    private Profissional profissional;
+    @JoinColumn(name = "id_Consulta")
+    private Consulta consulta;
 
     private Date dataConsulta; // Mapeando a coluna dataConsulta
     
@@ -62,11 +62,11 @@ public class Consulta {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Profissional getProfissional() {
-		return profissional;
+	public Consulta getConsulta() {
+		return consulta;
 	}
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
 	}
 	
 	public String getStatusConsulta() {

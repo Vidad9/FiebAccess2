@@ -1,157 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-   
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Consulta</title>
-    <link rel="stylesheet" href="/sts\fiebaccess\src\main\resources\static\css\agenda.css">
-    <meta name="description" content="Simple landind page" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <!--Replace with your tailwind.css once created-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <link rel="stylesheet">
 </head>
-<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+<body>
 
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.book-button {
-    background-color: purple;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-
-}
-
-.book-button:hover {
-    background-color: purple;
-    color: white;
-}
-.back button:hover{
-    background-color: rgb(205, 150, 226);
-
-}
-
-.back button{
-    background-color: rgb(245, 235, 245);
-    border:1px inset #5E366A;
-    padding-left: 1%;
-    padding-right: 1%;
-    margin: 1%;
-
-}
-
-.wrap table{
-    border: 2px outset purple;
-}
-.wrap {
-    color: black;
-}
- .title h1{
-  background: linear-gradient(90deg , #341246 0% , #703c80 100%);
-    border: 1px inset rgb(158, 154, 158);
-    padding: 1%;
-    font-weight: 800;
-    font-size: 200%;
-    font-family:'Times New Roman', Times, serif;
-
-}
-.back{
-    max-height: fit-content;
-    margin-bottom: 30%;
-
-}
-.back h1{
-    color: rgb(255, 255, 255);
-    text-shadow: 1px 1px rgb(236, 199, 230);
-
-}
-.gradient {
-        background: white;
-      }
-      .back button{
-        color: black;
-
-      }
-
-      .container.mx-auto.px-8 {
-        background: linear-gradient(0.25turn, #5E366A, purple);
-        
-      }
-
-      .flex-1 a{
-        color: white;
-      }
-
-      .container.mx-auto.px-8 p{
-        color: white;
-      }
-      .flex-1.mb-6.text-black a{
-        color: #ff1d8e;
-      
-      }
-      .wrap i:hover{
-        color: rgb(0, 255, 55);
-     
-
-    }
-    </style>
-
-
-
-
-
-
-<div class="back">
-<div class="title">
-    <h1>Agendamento de Consulta</h1>
-</div>
     <div class="con-menu">
-        <button onclick="handleClick(event, 'con-links')" type="submit" class="active">
-            Confirmar Consulta
-        </button>
-       
-       <a href="land.html">          
+        
+       <th:ref="@{/land1}">          
         <button onclick="voltarParaTelaEspecifica()">Voltar</button>
 
 <script>
@@ -163,192 +22,163 @@ th, td {
 </script>
     </a>
     </div>
-    <div class="wrap">
-    <form action="AgendamentoServlet" method="post">
-    <table class="schedule" th:each="consulta : ${consultas}">
-        <tr>
-        	<th>Profissional</th>
-        	<th>Especialidade</th>
-            <th>Data</th>
-            <th>Horário</th>
-            <th>Dia da Semana</th>
-            <th>Marcar Consulta</th>
-        </tr>
+<style>
+    /* styles.css */
 
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f8; /* Cor de fundo de toda a página */
+}
+
+header {
+    background-color: #6A0DAD; /* Cor de fundo do cabeçalho roxo */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Cor de fundo do conteúdo branco */
+    border-radius: 10px; /* Borda arredondada para o conteúdo */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.con-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+        margin: auto;
+        width: 10%;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0px 15px 20px -5px rgba(0,0,0,.08);
+        border-radius: 0px 0px 30px 30px;
+    }
+    .con-menu button {
+        padding: 12px;
+        width: calc(-50%);
+        width: fit-content;
+        border: 0px;
+        align-content: center;
+        background: transparent;
+        font-weight: bold;
+        color: rgb(var(--text));
+        font-size: 1rem;
+        transition: all .25s ease;
+        box-shadow: 0px 0px 0px 0px rgba(0,0,0,.08);
+        border-radius: 16px;
+        z-index: 2;
    
-        <!-- Adicione os horários fixos e suas especialidades aqui -->
-        <tr th:each="consulta : ${consultas}">
-        	<td th:text="${consulta.profissional.nome}"></td>
-        	<td th:text="${consulta.profissional.categoria.descricao}"></td>
-          <td th:text="${consulta.dataConsulta}"></td>
-          <td th:text="${consulta.horario.horaInicio} + ' - ' + ${consulta.horario.horaFim}"></td>
-          <td th:text="${consulta.horario.diaSemana}"></td>
-          <td style="cursor: pointer;"><a th:href="@{seu-link-para-marcar}"><i id="1" class="fa-regular fa-calendar-days"></i></a></td>
-          <!--- (colocar ids nas consultas)-->
-        </tr>
-        <!-- Adicione mais horários e especialidades conforme necessário -->
-    </table>
+        justify-content:center;
+        align-items: center;
+    }
+
+    .con-menu a{
+   
+        width: fit-content;
+        justify-content:center;
+        align-items: center;
+
+    }
+/* Estilos para o formulário */
+form {
+    text-align: center;
+}
+
+h2 {
+    color: #6A0DAD; /* Cor do título roxo */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    background-color: #6A0DAD; /* Cor de fundo do botão roxo */
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Borda redonda para botões */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+button[type="submit"]:hover {
+    background-color: #510A94; /* Cor mais escura ao passar o mouse */
+}
+
+    </style>
+
+    <form id="agendamento-form" form action="/sua-servlet" method="post">
+    <h2>Agendar Consulta</h2>
+    
+   
+    <label for="data">Data:</label>
+    <select id="data" name="data" required>
+        <option value="">10/11</option>
+        <option value="">12/11</option>
+        <option value="">16/11</option>
+        </select>
+    
+    <label for="horario">Horário:</label>
+    <select id="horario" name="horario" required>
+        <option value="08:00">08:00</option>
+        <option value="10:00">10:00</option>
+        <option value="14:00">14:00</option>
+        <!-- Adicione mais opções de horários conforme necessário -->
+    </select>
+    
+    <label for="categoria">Especialidade:</label>
+    <select id="categoria" name="categoria" required>
+        <option value="Dentista">Dentista</option>
+        <option value="Dermatologia">Psicólogo</option>
+        <option value="Ortopedia">Nutricionista</option>
+        <!-- Adicione mais opções de especialidades conforme necessário -->
+    </select>
+    
+    <a>
+    <button type="submit"  onclick="one();">Agendar</button>
+    <script>
+        function voltarParaTelaEspecifica() {
+            // Use history.go(-n) para voltar a uma página específica no histórico
+            // Substitua 'n' pelo número de páginas que você deseja retroceder
+            history.go(-2); // Por exemplo, retroceder 2 páginas
+        }
+    </script>
+    </a>
+
+    <script type="text/javascript">
+        function one(){
+            alert('Sua consulta foi agendada com sucesso!').fadeOut();
+
+        }
+    
+    </script>
+
+
+
 </form>
-</div>
-</div>
-    <script src="script.js"></script>
-    <footer class="bg-white">
-        <div class="container mx-auto px-8">
-          <div class="w-full flex flex-col md:flex-row py-6">
-            <div class="flex-1 mb-6 text-black">
-              <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                <!--Icon from: http://www.potlabicons.com/ -->
-    <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-        <!--Icon from: http://www.potlabicons.com/ -->
+
+
         
-        FIEB ACCESS
-      </a>
-    </div>
-    <div class="flex-1">
-      <p class="uppercase text-gray-500 md:mb-6">Links</p>
-      <ul class="list-reset mb-6">
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
-        </li>
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Ajuda</a>
-        </li>
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\links.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Suporte</a>
-        </li>
-      </ul>
-    </div>
-    <div class="flex-1">
-      <p class="uppercase text-gray-500 md:mb-6">Legal</p>
-      <ul class="list-reset mb-6">
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Termos</a>
-        </li>
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\legal.HTML" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacidade</a>
-        </li>
-      </ul>
-    </div>
-   
-    <div class="flex-1">
-      <p class="uppercase text-gray-500 md:mb-6">Compania</p>
-      <ul class="list-reset mb-6">
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sobre nós</a>
-        </li>
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html"class="no-underline hover:underline text-gray-800 hover:text-pink-500">Sociedade</a>
-        </li>
-        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-          <a href="/sts\fiebaccess\src\main\resources\templates\INNERLINKS\comp.html" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contate-nos</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500"></a>
-</footer>
-
-<!-- jQuery if you need it
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
--->
-
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Descrição</th>
-    <th>Ações</th>
-  </tr>
-  <tr th:each="consulta : ${consultas}">
-    <td th:text="${consulta.idConsulta}"></td>
-    <td th:text="${consulta.descricao}"></td>
-    <td>
-       
-    </td>
-  </tr>
-  </table>
-  
-
-<script>
-var scrollpos = window.scrollY;
-var header = document.getElementById("header");
-var navcontent = document.getElementById("nav-content");
-var navaction = document.getElementById("navAction");
-var brandname = document.getElementById("brandname");
-var toToggle = document.querySelectorAll(".toggleColour");
-
-document.addEventListener("scroll", function () {
-  /*Apply classes for slide in bar*/
-  scrollpos = window.scrollY;
-
-  if (scrollpos > 10) {
-    header.classList.add("bg-white");
-    navaction.classList.remove("bg-white");
-    navaction.classList.add("gradient");
-    navaction.classList.remove("text-gray-800");
-    navaction.classList.add("text-white");
-    //Use to switch toggleColour colours
-    for (var i = 0; i < toToggle.length; i++) {
-      toToggle[i].classList.add("text-gray-800");
-      toToggle[i].classList.remove("text-white");
-    }
-    header.classList.add("shadow");
-    navcontent.classList.remove("bg-gray-100");
-    navcontent.classList.add("bg-white");
-  } else {
-    header.classList.remove("bg-white");
-    navaction.classList.remove("gradient");
-    navaction.classList.add("bg-white");
-    navaction.classList.remove("text-white");
-    navaction.classList.add("text-gray-800");
-    //Use to switch toggleColour colours
-    for (var i = 0; i < toToggle.length; i++) {
-      toToggle[i].classList.add("text-white");
-      toToggle[i].classList.remove("text-gray-800");
-    }
-
-    header.classList.remove("shadow");
-    navcontent.classList.remove("bg-white");
-    navcontent.classList.add("bg-gray-100");
-  }
-});
-</script>
-<script>
-/*Toggle dropdown list*/
-/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-var navMenuDiv = document.getElementById("nav-content");
-var navMenu = document.getElementById("nav-toggle");
-
-document.onclick = check;
-function check(e) {
-  var target = (e && e.target) || (event && event.srcElement);
-
-  //Nav Menu
-  if (!checkParent(target, navMenuDiv)) {
-    // click NOT on the menu
-    if (checkParent(target, navMenu)) {
-      // click on the link
-      if (navMenuDiv.classList.contains("hidden")) {
-        navMenuDiv.classList.remove("hidden");
-      } else {
-        navMenuDiv.classList.add("hidden");
-      }
-    } else {
-      // click both outside link and outside menu, hide menu
-      navMenuDiv.classList.add("hidden");
-    }
-  }
-}
-function checkParent(t, elm) {
-  while (t.parentNode) {
-    if (t == elm) {
-      return true;
-    }
-    t = t.parentNode;
-  }
-  return false;
-}
-</script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,33 +1,73 @@
 package br.itb.projeto.fiebaccess.model.service;
 
-import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import br.itb.projeto.fiebaccess.model.entity.Consulta;
+import br.itb.projeto.fiebaccess.model.entity.Usuario;
 import br.itb.projeto.fiebaccess.model.repository.ConsultaRepository;
+
 
 @Service
 public class ConsultaService {
 	
-	
-	private ConsultaRepository consultaRepository;
-	
+	private ConsultaRepository usuarioRepository;
+
 	public ConsultaService(ConsultaRepository consultaRepository) {
 		super();
 		this.consultaRepository = consultaRepository;
 	}
 	
 	
-	public List<Consulta> findAll() {
+	public Consulta findByEmail(String email) {
+		
+		Consulta consulta = consultaRepository.findByEmail(email);
+		
+		return consulta;
+	}
+	
+	@Transactional
+	public Consulta salvar(Usuario usuario) {
 		
 		
-		return consultaRepository.findAll();
+		consulta.setStatusConsulta("ATIVO");
+		consulta.setNivelAcesso("USER");
+		consulta.setFoto(null);
+		consulta.setSenha(usuario.getSenha());
+		
+		return consulta.Repository.save(usuario);
+		
 	}
 	
 	
-	public List<Consulta> getConsultasDoUsuario(long id){
-		return consultaRepository.findByUsuarioId(id);
+	@Transactional
+	public Consulta acessar(String email, String senha) {
+		
+		Consulta consulta = usuarioRepository.findByEmail(email);
+		
+		String _senha = senha;
+		
+		if (consulta != null && consulta.getStatusUsuario().equals("ATIVO")) {
+			
+			if (consulta.getData().equals(_data)) {
+				
+				return consulta;
+			}
+		}
+		return null;	 
 	}
-	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

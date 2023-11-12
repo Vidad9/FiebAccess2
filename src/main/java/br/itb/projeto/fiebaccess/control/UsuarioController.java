@@ -70,6 +70,13 @@ public class UsuarioController {
 		return "redirect:/login";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("/registro")
 	public String getRegistro(ModelMap model) {
 		
@@ -105,6 +112,13 @@ public class UsuarioController {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("/admin/home")
 	public String getHomeAdm(ModelMap model) {
 		
@@ -129,5 +143,28 @@ public class UsuarioController {
 		
 		return "perfil";
 	}
+	
+	@GetMapping("/land")
+	public String getLand(ModelMap model) {
+		
+		model.addAttribute("land", new Usuario());
+		
+		return "land";
+	}
+	
+	@GetMapping("/agendar")
+	public String getAgendar(ModelMap model) {
+		
+		model.addAttribute("agendar", new Usuario());
+		
+		return "agendar";
+	}
 
+	@GetMapping("/agend")
+	public String getAgend(ModelMap model) {
+		
+		model.addAttribute("agend", new Usuario());
+		
+		return "agend";
+	}
 }
