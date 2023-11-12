@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Consulta</title>
+    <link rel="stylesheet">
+</head>
+<body>
+
+    <div class="con-menu">
+        
+       <th:ref="@{/land1}">          
+        <button onclick="voltarParaTelaEspecifica()">Voltar</button>
+
+<script>
+    function voltarParaTelaEspecifica() {
+        // Use history.go(-n) para voltar a uma página específica no histórico
+        // Substitua 'n' pelo número de páginas que você deseja retroceder
+        history.go(-2); // Por exemplo, retroceder 2 páginas
+    }
+</script>
+    </a>
+    </div>
+<style>
+    /* styles.css */
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f8; /* Cor de fundo de toda a página */
+}
+
+header {
+    background-color: #6A0DAD; /* Cor de fundo do cabeçalho roxo */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Cor de fundo do conteúdo branco */
+    border-radius: 10px; /* Borda arredondada para o conteúdo */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.con-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+        margin: auto;
+        width: 10%;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0px 15px 20px -5px rgba(0,0,0,.08);
+        border-radius: 0px 0px 30px 30px;
+    }
+    .con-menu button {
+        padding: 12px;
+        width: calc(-50%);
+        width: fit-content;
+        border: 0px;
+        align-content: center;
+        background: transparent;
+        font-weight: bold;
+        color: rgb(var(--text));
+        font-size: 1rem;
+        transition: all .25s ease;
+        box-shadow: 0px 0px 0px 0px rgba(0,0,0,.08);
+        border-radius: 16px;
+        z-index: 2;
+   
+        justify-content:center;
+        align-items: center;
+    }
+
+    .con-menu a{
+   
+        width: fit-content;
+        justify-content:center;
+        align-items: center;
+
+    }
+/* Estilos para o formulário */
+form {
+    text-align: center;
+}
+
+h2 {
+    color: #6A0DAD; /* Cor do título roxo */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    background-color: #6A0DAD; /* Cor de fundo do botão roxo */
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Borda redonda para botões */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+button[type="submit"]:hover {
+    background-color: #510A94; /* Cor mais escura ao passar o mouse */
+}
+
+    </style>
+
+    <form id="agendamento-form" form action="/sua-servlet" method="post">
+    <h2>Agendar Consulta</h2>
+    
+   
+    <label for="data">Data:</label>
+    <select id="data" name="data" required>
+        <option value="">10/11</option>
+        <option value="">12/11</option>
+        <option value="">16/11</option>
+        </select>
+    
+    <label for="horario">Horário:</label>
+    <select id="horario" name="horario" required>
+        <option value="08:00">08:00</option>
+        <option value="10:00">10:00</option>
+        <option value="14:00">14:00</option>
+        <!-- Adicione mais opções de horários conforme necessário -->
+    </select>
+    
+    <label for="categoria">Especialidade:</label>
+    <select id="categoria" name="categoria" required>
+        <option value="Dentista">Dentista</option>
+        <option value="Dermatologia">Psicólogo</option>
+        <option value="Ortopedia">Nutricionista</option>
+        <!-- Adicione mais opções de especialidades conforme necessário -->
+    </select>
+    
+    <a>
+    <button type="submit"  onclick="one();">Agendar</button>
+    <script>
+        function voltarParaTelaEspecifica() {
+            // Use history.go(-n) para voltar a uma página específica no histórico
+            // Substitua 'n' pelo número de páginas que você deseja retroceder
+            history.go(-2); // Por exemplo, retroceder 2 páginas
+        }
+    </script>
+    </a>
+
+    <script type="text/javascript">
+        function one(){
+            alert('Sua consulta foi agendada com sucesso!').fadeOut();
+
+        }
+    
+    </script>
+
+
+
+</form>
+
+
+        
+    <script src="script.js"></script>
+</body>
+</html>
