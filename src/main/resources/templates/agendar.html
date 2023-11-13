@@ -1,184 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento de Consulta</title>
-    <link rel="stylesheet">
+    
+    
+    <title>Tela de Agendamento</title>
+
+
 </head>
 <body>
 
-    <div class="con-menu">
-        
-       <th:ref="@{/land1}">          
-        <button onclick="voltarParaTelaEspecifica()">Voltar</button>
-
-<script>
-    function voltarParaTelaEspecifica() {
-        // Use history.go(-n) para voltar a uma página específica no histórico
-        // Substitua 'n' pelo número de páginas que você deseja retroceder
-        history.go(-2); // Por exemplo, retroceder 2 páginas
-    }
-</script>
-    </a>
-    </div>
+</body>    
 <style>
-    /* styles.css */
+        /* Defina a cor de fundo do corpo da página como roxo */
+        .gradient {
+        background: white;
+      }
+      .container.mx-auto.px-8 {
+        background: linear-gradient(0.25turn, #5E366A, purple);
+        
+      }
 
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f8; /* Cor de fundo de toda a página */
-}
+      .flex-1 a{
+        color: white;
+      }
 
-header {
-    background-color: #6A0DAD; /* Cor de fundo do cabeçalho roxo */
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
+      .container.mx-auto.px-8 p{
+        color: white;
+      }
+      .flex-1.mb-6.text-black a{
+        color: #ff1d8e;
+      
+      }
+      .titulo h1{
+        color: white;
+        text-shadow: 1px 1px rgb(236, 199, 230);
+      }
+      .titulo{
+  background: linear-gradient(90deg , #341246 0% , #703c80 100%);
+    border: 1px inset rgb(158, 154, 158);
+    color: rgb(64, 63, 65);
+    text-shadow: 1px 1px black;
 
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff; /* Cor de fundo do conteúdo branco */
-    border-radius: 10px; /* Borda arredondada para o conteúdo */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
-.con-menu {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-
-        margin: auto;
-        width: 10%;
-        position: relative;
-        z-index: 10;
-        box-shadow: 0px 15px 20px -5px rgba(0,0,0,.08);
-        border-radius: 0px 0px 30px 30px;
-    }
-    .con-menu button {
-        padding: 12px;
-        width: calc(-50%);
-        width: fit-content;
-        border: 0px;
-        align-content: center;
-        background: transparent;
-        font-weight: bold;
-        color: rgb(var(--text));
-        font-size: 1rem;
-        transition: all .25s ease;
-        box-shadow: 0px 0px 0px 0px rgba(0,0,0,.08);
-        border-radius: 16px;
-        z-index: 2;
-   
-        justify-content:center;
-        align-items: center;
-    }
-
-    .con-menu a{
-   
-        width: fit-content;
-        justify-content:center;
-        align-items: center;
-
-    }
-/* Estilos para o formulário */
-form {
-    text-align: center;
-}
-
-h2 {
-    color: #6A0DAD; /* Cor do título roxo */
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="date"],
-select {
+    padding: 1%;
+    font-weight: 800;
+    font-size: 200%;
+    font-family:'Times New Roman', Times, serif;
     width: 100%;
-    padding: 10px;
+    text-align: center;
+}
+
+
+
+
+
+        body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(10, 10, 10); /* Cor do texto em branco para contraste */
+    font-family: Arial, sans-serif;
+    /* CSS */
+
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin: 0;
+
+}
+
+/* Estilize os campos de entrada de data e horário */
+input[type="text"] {
     border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-button[type="submit"] {
-    background-color: #6A0DAD; /* Cor de fundo do botão roxo */
+/* Estilize o seletor de especialidade */
+select {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Estilize os botões */
+input[type="submit"] {
+    background-color: #8b008b; /* Roxo escuro */
     color: #fff;
-    border: none;
-    border-radius: 50px; /* Borda redonda para botões */
     padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
 }
 
-button[type="submit"]:hover {
-    background-color: #510A94; /* Cor mais escura ao passar o mouse */
+/* Estilize os links (por exemplo, para a página de administração) */
+a {
+    color: #fff;
+    text-decoration: none;
 }
+
+/* Quando o mouse pairar sobre o botão, mude o estilo */
+input[type="submit"]:hover {
+    background-color: #6a006a; /* Roxo mais claro */
+}
+
+/* CSS */
+/* Resto dos seus estilos aqui */
+
+.back-button {
+    background-color: #8b008b; /* Roxo escuro */
+    font-family: Arial, sans-serif;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px; /* Ajuste o espaçamento conforme necessário */
+    display: inline-block;
+}
+
+.back-button:hover {
+    background-color: #6a006a; /* Roxo mais claro */
+}
+.form{
+
+}
+
 
     </style>
+    <div class="titulo">
+    <div >
+    <h1>Agendamento</h1>
+</div>
+</div>
+    <div class="form">
+    <form action="processar_agendamento.php" method="post">
 
-    <form id="agendamento-form" form action="/sua-servlet" method="post">
-    <h2>Agendar Consulta</h2>
-    
-   
-    <label for="data">Data:</label>
-    <select id="data" name="data" required>
-        <option value="">10/11</option>
-        <option value="">12/11</option>
-        <option value="">16/11</option>
+        <label for="data">Datas Disponíveis:</label>
+        <select id="data" name="data">
+            <option value="Data1">11/11</option>
+            <option value="Data2">15/11</option>
+            <!-- Adicione outras especialidades aqui -->
         </select>
-    
-    <label for="horario">Horário:</label>
-    <select id="horario" name="horario" required>
-        <option value="08:00">08:00</option>
-        <option value="10:00">10:00</option>
-        <option value="14:00">14:00</option>
-        <!-- Adicione mais opções de horários conforme necessário -->
-    </select>
-    
-    <label for="categoria">Especialidade:</label>
-    <select id="categoria" name="categoria" required>
-        <option value="Dentista">Dentista</option>
-        <option value="Dermatologia">Psicólogo</option>
-        <option value="Ortopedia">Nutricionista</option>
-        <!-- Adicione mais opções de especialidades conforme necessário -->
-    </select>
-    
-    <a>
-    <button type="submit"  onclick="one();">Agendar</button>
-    <script>
-        function voltarParaTelaEspecifica() {
-            // Use history.go(-n) para voltar a uma página específica no histórico
-            // Substitua 'n' pelo número de páginas que você deseja retroceder
-            history.go(-2); // Por exemplo, retroceder 2 páginas
-        }
-    </script>
-    </a>
 
-    <script type="text/javascript">
-        function one(){
-            alert('Sua consulta foi agendada com sucesso!').fadeOut();
-
-        }
-    
-    </script>
-
-
-
-</form>
-
+        <label for="hora">Horários Disponíveis:</label>
+        <select id="hora" name="hora">
+            <option value="hora1">10:00</option>
+            <option value="hora2">12:00</option>
+            <!-- Adicione outras especialidades aqui -->
+        </select>
 
         
-    <script src="script.js"></script>
+
+        <input type="submit" value="Agendar" th:action="@{/consultar}" th:object="${consulta}" method="post">
+
+        <a href="javascript:history.back()" class="back-button">Voltar</a>
+    </form>
+</div>
+
+
+    
+<script>fetch('/seu-endpoint-de-dados-atualizados')
+    .then(response => response.json())
+    .then(data => {
+        // Atualize a exibição com os novos dados
+        // Preencha a tabela ou lista com as datas e horários atualizados.
+    })
+    .catch(error => {
+        console.error('Erro ao buscar dados atualizados: ' + error);
+    });
+
+    </script>
+
 </body>
 </html>
