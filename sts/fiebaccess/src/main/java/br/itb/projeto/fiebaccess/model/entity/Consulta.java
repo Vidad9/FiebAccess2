@@ -19,20 +19,17 @@ public class Consulta {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Consulta;
+    private int idConsulta;
 
     @ManyToOne
-    @JoinColumn(name = "id_Usuario")
+    @JoinColumn(name = "idUsuario ")
     private Usuario usuario;
     
     @ManyToOne
-    @JoinColumn(name = "id_Horario")
+    @JoinColumn(name = "idHorario")
     private Horario horario; // Certifique-se de que o nome da propriedade corresponda ao mapeamento correto no banco de dados
     
-    @ManyToOne
-    @JoinColumn(name = "id_Profissional")
-    private Profissional profissional;
-
+    
     private Date dataConsulta; // Mapeando a coluna dataConsulta
     
     
@@ -51,10 +48,10 @@ public class Consulta {
 	private String statusConsulta;
     
 	public int getId_Consulta() {
-		return id_Consulta;
+		return idConsulta;
 	}
 	public void setId_Consulta(int id_Consulta) {
-		this.id_Consulta = id_Consulta;
+		this.idConsulta = id_Consulta;
 	}
 	public Usuario getUsuario() {
 		return usuario;
@@ -62,17 +59,12 @@ public class Consulta {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Profissional getProfissional() {
-		return profissional;
-	}
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
-	}
+	
 	
 	public String getStatusConsulta() {
 		return statusConsulta;
 	}
-	public void setStatusConsulta(String statusConsulta) {
+	public void setStatusHorario(String statusHorario) {
 		this.statusConsulta = statusConsulta;
 	}
     

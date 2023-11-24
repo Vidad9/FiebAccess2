@@ -12,7 +12,7 @@ public class Categoria {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Categoria;
+    private int idCategoria;
 
     private String nome;
     private String descricao;
@@ -21,15 +21,15 @@ public class Categoria {
     
     
 	public int getId_Categoria() {
-		return id_Categoria;
+		return idCategoria;
 	}
 	public void setId_Categoria(int id_Categoria) {
-		this.id_Categoria = id_Categoria;
+		this.idCategoria = id_Categoria;
 	}
-	public String getNome() {
+	public String getNome_Prof() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNome_Prof(String nome) {
 		this.nome = nome;
 	}
 	public String getDescricao() {

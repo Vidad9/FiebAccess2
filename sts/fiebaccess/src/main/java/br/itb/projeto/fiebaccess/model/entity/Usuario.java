@@ -1,3 +1,4 @@
+
 package br.itb.projeto.fiebaccess.model.entity;
 
 import javax.persistence.Entity;

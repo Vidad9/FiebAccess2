@@ -1,9 +1,9 @@
 package br.itb.projeto.fiebaccess.control;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
@@ -14,5 +14,15 @@ public String getIndex() {
 }
 	
 	
+@GetMapping("/sair")
+public String logOff(HttpSession session) {
+	
+	session.removeAttribute("usuarioLogado");
+	
+	return "redirect:/login";
+	
+	
+}
+
 
 }

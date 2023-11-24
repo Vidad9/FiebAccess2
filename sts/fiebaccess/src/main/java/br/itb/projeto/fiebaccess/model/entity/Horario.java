@@ -16,25 +16,19 @@ public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Horario;
+    private int idHorario;
 
     private Time horaInicio;
     private Time horaFim;
-    private String diaSemana;
     private String statusHorario;
     
-    @ManyToOne
-    @JoinColumn(name = "consulta_id")
-    private Consulta consulta;
-
-    // Getters and Setters
 
     public int getId_Horario() {
-        return id_Horario;
+        return idHorario;
     }
 
     public void setId_Horario(int id_Horario) {
-        this.id_Horario = id_Horario;
+        this.idHorario = id_Horario;
     }
 
     public Time getHoraInicio() {

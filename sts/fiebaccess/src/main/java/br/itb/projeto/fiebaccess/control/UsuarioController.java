@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.itb.projeto.fiebaccess.model.entity.Categoria;
 import br.itb.projeto.fiebaccess.model.entity.Consulta;
+import br.itb.projeto.fiebaccess.model.entity.Horario;
 import br.itb.projeto.fiebaccess.model.entity.Usuario;
+import br.itb.projeto.fiebaccess.model.repository.CategoriaService;
 import br.itb.projeto.fiebaccess.model.service.ConsultaService;
+import br.itb.projeto.fiebaccess.model.service.HorarioService;
 import br.itb.projeto.fiebaccess.model.service.UsuarioService;
 
 
@@ -22,11 +26,15 @@ public class UsuarioController {
 	
 	private UsuarioService usuarioService;
 	private ConsultaService consultaService;
+	private HorarioService horarioService;
+	private CategoriaService categoriaService;
 
-	public UsuarioController(UsuarioService usuarioService, ConsultaService consultaService) {
+	public UsuarioController(UsuarioService usuarioService, ConsultaService consultaService, HorarioService horarioService, CategoriaService categoriaService) {
 		super();
 		this.usuarioService = usuarioService;
 		this.consultaService = consultaService;
+		this.horarioService = horarioService;
+		this.categoriaService = categoriaService;
 	}
 	
 	private String serverMessage = null;
@@ -70,6 +78,13 @@ public class UsuarioController {
 		return "redirect:/login";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("/registro")
 	public String getRegistro(ModelMap model) {
 		
@@ -105,6 +120,13 @@ public class UsuarioController {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("/admin/home")
 	public String getHomeAdm(ModelMap model) {
 		
@@ -125,9 +147,32 @@ public class UsuarioController {
 		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 		long userId = usuarioLogado.getId();
 		List<Consulta> consultas = consultaService.getConsultasDoUsuario(userId);
-		model.addAttribute("consultas", consultas);
+		
 		
 		return "perfil";
 	}
+	
+	@GetMapping("/land")
+	public String getLand(ModelMap model) {
+		
+		model.addAttribute("land", new Usuario());
+		
+		return "land";
+	}
+	
+	@GetMapping("/agendar")
+	public String getAgendar(ModelMap model) {
+		
+		model.addAttribute("agendar", new Consulta());
+		
+		List<Horario> horarios = horarioService.findAll();
+        model.addAttribute("horarios", horarios);
+ 
+		List<Categoria> categorias = categoriaService.findAll();
+		model.addAttribute("consultas", categorias);
+				
+		return "agend";
+	}
 
+	
 }

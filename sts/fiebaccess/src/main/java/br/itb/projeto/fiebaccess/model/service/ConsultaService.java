@@ -1,5 +1,6 @@
 package br.itb.projeto.fiebaccess.model.service;
 
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -7,27 +8,37 @@ import org.springframework.stereotype.Service;
 import br.itb.projeto.fiebaccess.model.entity.Consulta;
 import br.itb.projeto.fiebaccess.model.repository.ConsultaRepository;
 
+
 @Service
 public class ConsultaService {
 	
-	
 	private ConsultaRepository consultaRepository;
-	
+
 	public ConsultaService(ConsultaRepository consultaRepository) {
 		super();
 		this.consultaRepository = consultaRepository;
 	}
 	
 	
-	public List<Consulta> findAll() {
+	public List<Consulta> getConsultasDoUsuario(long userId){
 		
+	
 		
-		return consultaRepository.findAll();
+		return consultaRepository.findConsultaByUsuarioId(userId);
 	}
 	
 	
-	public List<Consulta> getConsultasDoUsuario(long id){
-		return consultaRepository.findByUsuarioId(id);
-	}
-	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
