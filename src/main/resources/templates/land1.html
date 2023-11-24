@@ -14,13 +14,84 @@
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
-    <style>
-      .gradient {
-        background: linear-gradient(90deg , #341246 0% , #703c80 100%);
-      }
-    </style>
+  
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    
+    <style>
+
+.abc{
+  margin-bottom: 9%;
+}
+
+ .gradient {
+        background: linear-gradient(90deg , #341246 0% , #703c80 100%);
+      }
+
+
+      .aaa{
+        position: absolute;
+        top: 100px;
+        right: 200px;
+      }
+
+.carousel {
+  border-radius: 5%;
+  width: 100%;
+  max-width: 600px; /* Largura máxima do carrossel */
+  margin: 0 auto; /* Centralizar o carrossel */
+  display: flex;
+  justify-content: flex-end; /* Alinhar à direita */
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 100%;
+  transition: transform 0.5s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  border-radius: 25%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #8b008b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Media query para telas menores */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%; /* Reduz a largura do carrossel em telas menores */
+    max-width: none; /* Remove a largura máxima */
+  }
+}
+    </style>
+    
+    
+    
     <!--Nav-->
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -65,6 +136,8 @@
     </nav>
     <!--Hero-->
     <div class="pt-24">
+
+      <div class="abc">
       <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
@@ -77,9 +150,23 @@
           </p>
           
        
-        <div class="w-full md:w-3/5 py-6 text-center">
-        
+        <div class="w-full md:w-3/5 py-6 text-center"> 
         </div>
+       <!--Right Col-->
+      <div class="aaa">
+       <div class="carousel">
+        <div class="slides">
+          <div class="slide"><img src="dent.jpg" alt="Imagem 1"></div>
+          <div class="slide"><img src="nutri.webp" alt="Imagem 2"></div>
+          <div class="slide"><img src="psi.jpg" alt="Imagem 3"></div>
+
+          <!-- Adicione mais divs de slide conforme necessário -->
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">Anterior</button>
+        <button class="next" onclick="moveSlide(1)">Próximo</button>
+      </div>
+    </div>
+      </div>
       </div>
     </div>
     <div class="relative -mt-12 lg:-mt-24">
@@ -608,6 +695,49 @@
         }
         return false;
       }
+    </script>
+
+    <script>
+      const track = document.querySelector('.slide-track');
+const slides = Array.from(track.children);
+
+const slideWidth = slides[0].getBoundingClientRect().width;
+
+// Define a largura do slide
+slides.forEach(slide => {
+  slide.style.width = `${slideWidth}px`;
+});
+
+// Move os slides para a posição correta
+const setSlidePosition = (slide, index) => {
+  slide.style.left = `${slideWidth * index}px`;
+};
+
+slides.forEach(setSlidePosition);
+
+    </script>
+
+    <script>
+      let slideIndex = 0;
+showSlides(slideIndex);
+
+function moveSlide(n) {
+  showSlides((slideIndex += n));
+}
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName('slide');
+  if (n >= slides.length) {
+    slideIndex = 0;
+  }
+  if (n < 0) {
+    slideIndex = slides.length - 1;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.transform = `translateX(${-(slideIndex * 100)}%)`;
+  }
+}
+
     </script>
   </body>
 </html>
