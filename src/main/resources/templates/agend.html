@@ -6,6 +6,45 @@
 <body>
 
     <style>
+
+        /* Defina a cor de fundo do corpo da página como roxo */
+        .gradient {
+        background: white;
+      }
+      .container.mx-auto.px-8 {
+        background: linear-gradient(0.25turn, #5E366A, purple);
+        
+      }
+
+      .flex-1 a{
+        color: white;
+      }
+
+      .container.mx-auto.px-8 p{
+        color: white;
+      }
+      .flex-1.mb-6.text-black a{
+        color: #ff1d8e;
+      
+      }
+      .titulo h1{
+        color: white;
+        text-shadow: 1px 1px rgb(236, 199, 230);
+      }
+      .titulo{
+  background: linear-gradient(90deg , #341246 0% , #703c80 100%);
+    border: 1px inset rgb(158, 154, 158);
+    color: rgb(64, 63, 65);
+    text-shadow: 1px 1px black;
+margin-top: -10%;
+    padding: 1%;
+    font-weight: 800;
+    font-size: 200%;
+    font-family:'Times New Roman', Times, serif;
+    width: 100%;
+    text-align: center;
+}
+
         /* Defina a cor de fundo do corpo da página como roxo */
 body {
     background-color: rgb(255, 255, 255);
@@ -78,7 +117,11 @@ input[type="submit"]:hover {
 
 
     </style>
+  <div class="titulo">
+    <div >
     <h1>Agendamento</h1>
+</div>
+</div>
     <form action="processar_agendamento.php" method="post">
 
         <label for="data">Datas Disponíveis:</label>
